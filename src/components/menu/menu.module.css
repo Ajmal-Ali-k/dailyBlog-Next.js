@@ -80,3 +80,8 @@
 .category.fashion {
     background-color: blue;
 }
+@media screen and (max-width: 1024px) {
+    .container {
+        display: none;
+    }
+}
