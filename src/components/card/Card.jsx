@@ -2,27 +2,35 @@ import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
 
-const Card = () => {
+const Card = ({ key, data }) => {
+ 
   return (
-    <div className={styles.container}>
-      <div className={styles.imageContainer}>
-        <Image src="/p1.jpeg" alt="pic" fill className={styles.image}/>
-      </div>
+    <div className={styles.container} key={key}>
+      {data.img && (
+        <div className={styles.imageContainer}>
+          <Image src={data.img} alt="pic" fill className={styles.image} />
+        </div>
+      )}
       <div className={styles.textContainer}>
         <div className={styles.details}>
-          <span className={styles.date}>11.02.2023 - </span>
-          <span className={styles.category}>culture</span>
+          <span className={styles.date}>
+            {data.createdAt.substring(0, 10)} -{" "}
+          </span>
+          <span className={styles.category}>{data.catSlug}</span>
         </div>
-        <Link href="/">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+        <Link href={`/posts/${data.slug}`}>
+          <h1>{data.title}</h1>
         </Link>
-        <p className={styles.desc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-          consectetur libero aliquam. Rerum neque tempore quae, quisquam debitis
-          earum rem vero suscipit excepturi laboriosam reiciendis assumenda
-          facere minima ducimus sit.
-        </p>
-        <Link className={styles.link} href="/">Read more</Link>
+        {typeof data?.desc === "string" && (
+            <div
+              className={styles.desc}
+              dangerouslySetInnerHTML={{ __html: data?.desc.substring(0,60) }}
+            />
+          )}
+        {/* <p className={styles.desc}>{data.desc.substring(0, 60)}</p> */}
+        <Link className={styles.link} href={`/posts/${data.slug}`}>
+          Read more
+        </Link>
       </div>
     </div>
   );

@@ -24,13 +24,22 @@
   border-radius: 10px;
 }
 .category.style {
-  background-color: #57c4ff31;
+  background-color: #ec890731;
 }
 .category.coding {
   background-color: #e69ebc31;
 }
+.category.fashion {
+  background-color: #45eec931;
+}
 .category.travel {
-  background-color: #82ff1c31;
+  background-color: #61ca0b31;
+}
+.category.culture {
+  background-color: #f8e80a31;
+}
+.category.food {
+  background-color: #19d8fa31;
 }
 
 .image {
